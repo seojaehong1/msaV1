@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/cust-service" />
             <option value="$PROJECT_DIR$/eureka-server" />
             <option value="$PROJECT_DIR$/gateway-service" />
+            <option value="$PROJECT_DIR$/member-service" />
             <option value="$PROJECT_DIR$/order-service" />
             <option value="$PROJECT_DIR$/product-service" />
           </set>

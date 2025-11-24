@@ -50,6 +50,11 @@ public class MemberService {
         return jwtUtil.generateToken(member.getUsername(), member.getRole().name());
     }
 
+    public Member getMemberByUsername(String username) {
+        return memberRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
+    }
+
     public List<Member> getAllMembers() {
         return memberRepository.findAll();
     }
@@ -71,8 +76,12 @@ public class MemberService {
 
         member.setUsername(username);
         member.setEmail(email);
-        if (role != null) {
-            member.setRole(Member.Role.valueOf(role));
+        if (role != null && !role.isEmpty()) {
+            try {
+                member.setRole(Member.Role.valueOf(role));
+            } catch (IllegalArgumentException e) {
+                throw new RuntimeException("유효하지 않은 역할입니다: " + role);
+            }
         }
 
         return memberRepository.save(member);

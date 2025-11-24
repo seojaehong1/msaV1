@@ -44,10 +44,7 @@ public class AuthController {
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
         try {
             String token = memberService.login(request.getUsername(), request.getPassword());
-            Member member = memberService.getAllMembers().stream()
-                    .filter(m -> m.getUsername().equals(request.getUsername()))
-                    .findFirst()
-                    .orElseThrow();
+            Member member = memberService.getMemberByUsername(request.getUsername());
 
             Map<String, String> response = new HashMap<>();
             response.put("token", token);

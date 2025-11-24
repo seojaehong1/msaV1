@@ -38,23 +38,31 @@ public class JwtUtil {
     }
 
     public String getUsernameFromToken(String token) {
-        Claims claims = Jwts.parserBuilder()
-                .setSigningKey(getSigningKey())
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
+        try {
+            Claims claims = Jwts.parserBuilder()
+                    .setSigningKey(getSigningKey())
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
 
-        return claims.getSubject();
+            return claims.getSubject();
+        } catch (Exception e) {
+            throw new RuntimeException("토큰에서 사용자명을 추출할 수 없습니다: " + e.getMessage());
+        }
     }
 
     public String getRoleFromToken(String token) {
-        Claims claims = Jwts.parserBuilder()
-                .setSigningKey(getSigningKey())
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
+        try {
+            Claims claims = Jwts.parserBuilder()
+                    .setSigningKey(getSigningKey())
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
 
-        return claims.get("role", String.class);
+            return claims.get("role", String.class);
+        } catch (Exception e) {
+            throw new RuntimeException("토큰에서 역할을 추출할 수 없습니다: " + e.getMessage());
+        }
     }
 
     public boolean validateToken(String token) {

@@ -7,10 +7,10 @@
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.30/f195ee86e6c896ea47a1d39defbe20eb59cd149d/lombok-1.18.30.jar" />
         </processorPath>
+        <module name="sb3_msa3.member-service.main" />
         <module name="sb3_msa3.order-service.main" />
         <module name="sb3_msa3.product-service.main" />
         <module name="sb3_msa3.cust-service.main" />
-        <module name="sb3_msa3.gateway-service.main" />
         <module name="sb3_msa3.eureka-server.main" />
       </profile>
     </annotationProcessing>
@@ -27,6 +27,9 @@
       <module name="sb3_msa3.gateway-service" options="-parameters" />
       <module name="sb3_msa3.gateway-service.main" options="-parameters" />
       <module name="sb3_msa3.gateway-service.test" options="-parameters" />
+      <module name="sb3_msa3.member-service" options="-parameters" />
+      <module name="sb3_msa3.member-service.main" options="-parameters" />
+      <module name="sb3_msa3.member-service.test" options="-parameters" />
       <module name="sb3_msa3.order-service" options="-parameters" />
       <module name="sb3_msa3.order-service.main" options="-parameters" />
       <module name="sb3_msa3.order-service.test" options="-parameters" />
